@@ -16,3 +16,37 @@ public:
 
 #endif // TORRES_H
 
+--------------------------------------------------------------------------------------------------------
+#include "torres.h"
+
+stackVector::stackVector(int N){
+    TOP = 0;
+    N = this->N;
+}
+
+bool stackVector::Push(int O){
+    if(TOP==N){
+        return false;
+    }
+    V[TOP] = O;
+    TOP++;
+    return true;
+}
+
+bool stackVector::Pop(int *AUX){
+    if(!TOP){
+        return false;
+    }
+    TOP--;
+    *AUX = V[TOP];
+    return true;
+}
+
+bool stackVector::IsEmpty(){
+    return !TOP;
+}
+
+bool stackVector::IsFull(){
+    return TOP==N;
+}
+-------------------------------------------------------------------------------------------------------
