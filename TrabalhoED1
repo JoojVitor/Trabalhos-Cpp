@@ -1,0 +1,18 @@
+#ifndef TORRES_H
+#define TORRES_H
+
+class stackVector{
+private:
+    int *V;
+    int N;
+    int TOP;
+public:
+    stackVector(int N);
+    bool Push(int O);
+    bool Pop(int *AUX);
+    bool IsEmpty();
+    bool IsFull();
+};
+
+#endif // TORRES_H
+
