@@ -1,0 +1,45 @@
+#ifndef STACK_H
+#define STACK_H
+
+class Node{
+public:
+    int D;
+    Node *next;
+    static Node *montaNode(int *DAT);
+    static void desmontaNode(Node *P, int *DAT);
+};
+
+class stack{
+private:
+    Node *TOP;
+public:
+    stack(){TOP = 0;}
+    bool IsEmpty(){return !TOP;}
+    bool Push(int *DAT);
+    bool Pop(int *DAT);
+};
+
+#endif // STACK_H
+
+--------------------------------------------------------------------------------------------------------
+#include "stack.h"
+
+bool stack::Push(int *DAT){
+    Node *P = Node::montaNode(DAT);
+    if(!P)
+        return false;
+    P->next = TOP;
+    TOP = P;
+    return true;
+}
+
+bool stack::Pop(int *DAT){
+    if(!TOP)
+        return false;
+    Node *P = TOP;
+    TOP = P->next;
+    Node::desmontaNode(P,DAT);
+    return true;
+}
+
+-------------------------------------------------------------------------------------------------------
