@@ -1,0 +1,89 @@
+#ifndef QUEUE_H
+#define QUEUE_H
+
+#include<iostream>
+
+class Node{
+public:
+    int D;
+    Node *next;
+
+    static Node *montaNode(int *DAT);
+    static void desmontaNode(Node *P, int *DAT);
+};
+
+class queue{
+private:
+    Node *tail;
+    Node *head;
+public:
+    queue(){head = tail = NULL;}
+    bool IsEmpty(){return !head;}
+    bool enqueue(int *DAT);
+    bool dequeue(int *DAT);
+};
+
+#endif // QUEUE_H
+----------------------------------------------------------------------------------------------------------
+#include <iostream>
+#include "queue.h"
+
+Node *Node::montaNode(int *DAT){
+    Node *AUX = new Node;
+    if(AUX){
+        AUX->D = *DAT;
+        AUX->next = NULL;
+    }
+    return AUX;
+}
+
+void Node::desmontaNode(Node *P, int *DAT){
+    if(P){
+        *DAT = P->D;
+        delete P;
+    }
+}
+
+bool queue::enqueue(int *DAT){
+    Node *P = Node::montaNode(DAT);
+    if(!P)
+        return false;
+    if(!head){
+        head = tail = P;
+    }else{
+        tail->next = P;
+        tail = P;
+    }
+    return true;
+}
+
+bool queue::dequeue(int *DAT){
+    if(!head)
+        return false;
+    Node *P = head;
+    head = head->next;
+    Node::desmontaNode(P,DAT);
+    if(!head)
+        tail = NULL;
+    return true;
+}
+----------------------------------------------------------------------------------------------------------
+#include <iostream>
+#include "queue.h"
+using namespace std;
+int main()
+{
+    int N;
+    int a=0;
+    queue F;
+    for(int i=0; i < 3; i++){
+        F.enqueue(&a);
+        a++;
+        system("pause");
+    }
+
+    for(int i=0; i < 3; i++){
+        cout<< F.dequeue(&N) <<endl;
+    }
+}
+----------------------------------------------------------------------------------------------------------
