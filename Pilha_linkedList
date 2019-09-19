@@ -11,6 +11,7 @@ public:
 
 class stack{
 private:
+    void printAll();
     Node *TOP;
 public:
     stack(){TOP = 0;}
@@ -41,12 +42,23 @@ void Node::desmontaNode(Node *P, int *DAT){
     }
 }
 
+void stack::printAll(){
+    Node *AUX = TOP;
+    while(!AUX){
+        std::cout<< AUX->D;
+        AUX = AUX->next;
+    }
+    std::cout<< std::endl;
+}
+
 bool stack::Push(int *DAT){
     Node *P = Node::montaNode(DAT);
     if(!P)
         return false;
     P->next = TOP;
     TOP = P;
+    //COMANDO PARA TESTE!!!
+    //printAll();
     return true;
 }
 
