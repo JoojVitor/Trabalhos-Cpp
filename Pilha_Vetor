@@ -1,6 +1,3 @@
-#ifndef TORRES_H
-#define TORRES_H
-
 class stackVector{
 private:
     int V[6];
@@ -13,8 +10,6 @@ public:
     bool IsEmpty();
     bool IsFull();
 };
-
-#endif // TORRES_H
 --------------------------------------------------------------------------------------------------------
 #include "torres.h"
 
