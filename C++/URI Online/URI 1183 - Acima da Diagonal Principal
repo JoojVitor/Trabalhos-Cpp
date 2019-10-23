@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+int main(){
+	
+	int i, j, k = 1;
+	double M[12][12], aux = 0;
+	char O[2];
+	
+	cin>> O[0]; 
+	for(i = 0; i < 12; i++){
+		for(j = 0; j < 12; j++){
+			cin>> M[i][j];
+		}
+	}
+	for(i = 0; i < 12; i++){
+		for(j = k; j < 12; j++){
+			aux += M[i][j];
+		}
+		k++;
+	}
+	cout<<fixed;
+	cout.precision(1);
+	if(O[0] == 'S'){
+		cout<< aux <<endl;
+	}
+	else{
+		cout<< aux / 66.0 <<endl;
+	}
+}
