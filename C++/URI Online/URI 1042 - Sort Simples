@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+
+void sort(int *V){
+    int aux;
+    for (int i=0; i < 3; i++){
+        for (int j=0; j < 3; j++){
+            if(V[i] <= V[j]){
+                aux = V[j];
+                V[j] = V[i];
+                V[i] = aux;
+            }
+        }
+    }
+}
+
+int main(){
+    int V[3];
+    int V2[3];
+    for (int i=0; i < 3; i++){
+        cin>> V[i];
+        V2[i] = V[i];
+    }
+    sort(V);
+    for (int i=0; i < 3; i++){
+        cout<< V[i] <<endl;
+    }
+    cout<<endl;
+    for (int i=0; i < 3; i++){
+        cout<< V2[i] <<endl;
+    }
+}
