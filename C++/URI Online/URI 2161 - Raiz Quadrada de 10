@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+
+double raiz(int n){
+	if(n == 0){
+		return 3;
+	}
+	double r=6;
+	for(int i=1; i < n; i++){
+		r = 6 + 1.0/r;
+	}
+	r = 3+1/r;
+	return r;
+}
+
+int main(){
+	int n;
+	cin>> n;
+	cout<<fixed;
+	cout.precision(10);
+	cout<< raiz(n) <<endl;
+}
