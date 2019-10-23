@@ -1,0 +1,48 @@
+#include <iostream>
+#include <list>
+using namespace std;
+
+int main(){
+
+    string x;
+    int cont;
+    while(getline(cin,x)){
+        cont = 0;
+        list<pair<string,string>> L;
+
+        L.emplace_back("brasil","Feliz Natal!");
+        L.emplace_back("alemanha","Frohliche Weihnachten!");
+        L.emplace_back("austria","Frohe Weihnacht!");
+        L.emplace_back("coreia","Chuk Sung Tan!");
+        L.emplace_back("espanha","Feliz Navidad!");
+        L.emplace_back("grecia","Kala Christougena!");
+        L.emplace_back("estados-unidos","Merry Christmas!");
+        L.emplace_back("inglaterra","Merry Christmas!");
+        L.emplace_back("australia","Merry Christmas!");
+        L.emplace_back("portugal","Feliz Natal!");
+        L.emplace_back("suecia","God Jul!");
+        L.emplace_back("turquia","Mutlu Noeller");
+        L.emplace_back("argentina","Feliz Navidad!");
+        L.emplace_back("chile","Feliz Navidad!");
+        L.emplace_back("mexico","Feliz Navidad!");
+        L.emplace_back("antardida","Merry Christmas!");
+        L.emplace_back("canada","Merry Christmas!");
+        L.emplace_back("irlanda","Nollaig Shona Dhuit!");
+        L.emplace_back("belgica","Zalig Kerstfeest!");
+        L.emplace_back("italia","Buon Natale!");
+        L.emplace_back("libia","Buon Natale!");
+        L.emplace_back("siria","Milad Mubarak!");
+        L.emplace_back("marrocos","Milad Mubarak!");
+        L.emplace_back("japao","Merii Kurisumasu!");
+
+        while(cont < 24 and x != L.front().first){
+                L.emplace_back(L.front().first,L.front().second);
+                L.pop_front();
+                cont++;
+        }
+        if(x == L.front().first)
+            cout<< L.front().second <<endl;
+        if(cont >= 24)
+            cout<< "--- NOT FOUND ---\n";
+    }
+}
