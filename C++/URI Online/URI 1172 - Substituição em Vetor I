@@ -1,0 +1,20 @@
+#include <iostream>
+using namespace std;
+
+void positivo(int *vet,int p){
+    if(vet[p] <= 0){
+        vet[p] = 1;
+    }
+}
+
+int main(){
+    int V[10];
+    int i;
+    for (i=0;i<10;i++) {
+        cin>> V[i];
+        positivo(V,i);
+    }
+    for (i=0;i<10;i++) {
+        cout<< "X[" << i << "] = " << V[i] <<endl;
+    }
+}
