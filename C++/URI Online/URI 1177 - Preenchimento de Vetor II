@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+
+void Pvet(int *vet, int n){
+    int j=0;
+    for (int i=0; i < 1000; i++){
+        vet[i] = j;
+        j++;
+        if(j == n){
+            j = 0;
+        }
+    }
+}
+
+int main(){
+    int V[1000];
+    int T=0;
+
+    cin>> T;
+    Pvet(V,T);
+    for (int i=0; i < 1000; i++){
+        cout<< "N[" << i << "] = " << V[i] <<endl;
+    }
+}
