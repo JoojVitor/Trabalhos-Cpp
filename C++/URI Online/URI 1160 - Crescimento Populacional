@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+
+int calcP(int pa, int pb, float g1, float g2){
+    int i=0;
+    do{
+        pa += pa * (g1/100);
+        pb += pb * (g2/100);
+        i++;
+    }while(pa <= pb and i <= 101);
+    return i;
+}
+
+int main(){
+
+    int PA, PB, T;
+    float G1, G2;
+
+    cin>> T;
+
+    for(int i=0; i < T; i++){
+        cin>> PA >> PB;
+        cin>> G1 >> G2;
+        if(calcP(PA,PB,G1,G2) > 100){
+            cout<< "Mais de 1 seculo." <<endl;
+        }else{
+            cout<< calcP(PA,PB,G1,G2)<< " anos."<<endl;
+        }
+    }
+}
