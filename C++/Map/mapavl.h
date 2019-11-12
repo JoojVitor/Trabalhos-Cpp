@@ -5,9 +5,9 @@
 class MapAVL
 {
 private:
-    Node* Minimo(Node* R);
-    Node* Max(Node* R);
-    static bool Insert(Node** R, Node *P);
+    Node* Minimo(Node *R);
+    Node* Max(Node *R);
+    static bool Insert(Node **R, Node *P);
     static void RSD(Node **R);
     static void RSE(Node **R);
     static void RDD(Node **R);
