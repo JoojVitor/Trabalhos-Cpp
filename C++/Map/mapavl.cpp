@@ -2,7 +2,7 @@
 
 MapAVL::MapAVL()
 {
-
+    root = nullptr;
 }
 
 MapAVL::MapAVL(Node *root1)
@@ -10,13 +10,19 @@ MapAVL::MapAVL(Node *root1)
     root = root1;
 }
 
-Node *MapAVL::Minimo(Node *R)
+/*Node *MapAVL::Minimo(Node *R)
 {
     while(R and R->Left)
     {
         R = R->Left;
     }
     return R;
+}*/
+
+Node *MapAVL::Max(Node *R){
+    if(!(R->Right))
+        return R;
+    Max(R->Right);
 }
 
 void MapAVL::RSD(Node **R)
@@ -164,7 +170,7 @@ bool MapAVL::Insert(Node **R, Node *P)
         // inseriu e  cresceu
         if((*P).FB == 0)
         {
-            (*R)->FB = 1;
+            (*R)->FB = +1;
             return true;
         }
         if((*R)->FB == -1)
@@ -179,9 +185,17 @@ bool MapAVL::Insert(Node **R, Node *P)
             return false;
         }
 
-        // RDD
+        // RDE
         RDE(R);
         return false;
+    }
+    return false;
+}
+
+bool MapAVL::Push(thing *DAT){
+    Node *P = Node::montaNode(DAT);
+    if(P){
+        return Insert(&root,P);
     }
     return false;
 }
@@ -232,7 +246,7 @@ bool MapAVL::Remove(Node **R, int k, thing *DAT)
         // inseriu e cresceu
         if((*R)->FB == 0)
         {
-            (*R)->FB = 1;
+            (*R)->FB = +1;
             return true;
         }
         if((*R)->FB == -1)
