@@ -4,25 +4,21 @@
 
 class MapAVL
 {
-    Node* root;
-public:
-    MapAVL();
-    MapAVL(Node *root1);
-
+private:
     Node* Minimo(Node* R);
-
-    //rotações
+    Node* Max(Node* R);
+    static bool Insert(Node** R, Node *P);
     static void RSD(Node **R);
     static void RSE(Node **R);
-
     static void RDD(Node **R);
     static void RDE(Node **R);
 
+public:
+    Node *root;
+    MapAVL();
+    MapAVL(Node *root1);
 
-    //inserção
-    static bool Insert(Node** R, Node *P);
-
-    //remoção
+    bool Push(thing *DAT);
     static bool Remove(Node **R,int k, thing *DAT);
 };
 
