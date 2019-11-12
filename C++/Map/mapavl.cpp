@@ -10,14 +10,14 @@ MapAVL::MapAVL(Node *root1)
     root = root1;
 }
 
-/*Node *MapAVL::Minimo(Node *R)
+Node *MapAVL::Minimo(Node *R)
 {
     while(R and R->Left)
     {
         R = R->Left;
     }
     return R;
-}*/
+}
 
 Node *MapAVL::Max(Node *R){
     if(!(R->Right))
@@ -168,7 +168,7 @@ bool MapAVL::Insert(Node **R, Node *P)
     if(MapAVL::Insert(&(*R)->Right,P))
     {
         // inseriu e  cresceu
-        if((*P).FB == 0)
+        if(*R->FB == 0)
         {
             (*R)->FB = +1;
             return true;
