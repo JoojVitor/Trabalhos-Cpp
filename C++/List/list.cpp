@@ -1,12 +1,14 @@
 #include "list.h"
 
-List::List()
+template<class thing>
+List<thing>::List()
 {
     Head = Tail = nullptr;
 }
 
-bool List::Push(int *DAT){
-    Node *P = Node::montaNode(DAT);
+template<class thing>
+bool List<thing>::Push(thing *DAT){
+    Node<thing> *P = Node<thing>::montaNode(DAT);
     if(!P)
         return false;
     P->next = Head;
@@ -20,8 +22,9 @@ bool List::Push(int *DAT){
     return true;
 }
 
-bool List::Pop(int K, int *DAT){
-    Node *P = Head;
+template<class thing>
+bool List<thing>::Pop(int K, thing *DAT){
+    Node<thing> *P = Head;
     while(P and (P->D) != K){
         P = P->next;
     }
@@ -37,22 +40,20 @@ bool List::Pop(int K, int *DAT){
     }else{
         Tail = P->Prev;
     }
-    Node::desmontaNode(P,DAT);
+    Node<thing>::desmontaNode(P,DAT);
     return true;
 }
 
-bool List::search(int k, int *DAT)
+template<class thing>
+bool List<thing>::search(int k, thing *DAT)
 {
-    Node *P = Head;
-
+    Node<thing> *P = Head;
     while(P && (P->D) != k){
         P = P->next;
     }
-
     if(P){
         *DAT = P->D;
         return true;
     }
-
     return false;
 }
