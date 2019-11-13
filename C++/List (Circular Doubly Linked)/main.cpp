@@ -9,5 +9,8 @@ int main(){
         l.Push(&i);
     }
     l.Pop(&aux,9);
-    cout<< aux;
+    cout<< aux <<endl;
+    if(!l.Search(&aux,11)){
+        cout<< "Nao existe!\n";
+    }
 }
