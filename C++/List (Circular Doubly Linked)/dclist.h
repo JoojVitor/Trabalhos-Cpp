@@ -13,6 +13,7 @@ public:
     int Size(){return size;}
     bool Empty(){return !head;}
     bool Push(thing *DAT);
+    bool Search(thing *DAT, int K);
     bool Pop(thing *DAT, int K);
 };
 
