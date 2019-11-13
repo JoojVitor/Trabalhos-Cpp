@@ -1,14 +1,28 @@
 #ifndef NODE_H
 #define NODE_H
 
+template<class thing>
 class Node{
 public:
-    int D;
+    thing D;
     Node *next;
-    Node *Prev;
+    Node *prev;
 
-    static Node *montaNode(int *DAT);
-    static void desmontaNode(Node *P, int *DAT);
+    static Node *montaNode(thing *DAT){
+        Node *AUX = new Node;
+        if(AUX){
+            AUX->D = *DAT;
+            AUX->next = nullptr;
+            AUX->prev = nullptr;
+        }
+        return AUX;
+    }
+    static void desmontaNode(Node *P, thing *DAT){
+        if(P){
+            *DAT = P->D;
+            delete P;
+        }
+    }
 };
 
 #endif // NODE_H
