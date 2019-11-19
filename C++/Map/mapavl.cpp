@@ -105,10 +105,8 @@ void MapAVL::RDE(Node **R){
     }
 }
 
-bool MapAVL::Insert(Node **R, Node *P)
-{
-    if(!(*R))
-    {
+bool MapAVL::Insert(Node **R, Node *P){
+    if(!(*R)){
         // ta na folha -> insere
         *R = P;
         P->FB = 0;
@@ -117,21 +115,17 @@ bool MapAVL::Insert(Node **R, Node *P)
     if(P->D.key < (*R)->D.key)
     {
         // inserir na sub da esquerda
-        if(MapAVL::Insert(&(*R)->Left,P))
-        {
-            if((*P).FB == 0)
-            {
+        if(MapAVL::Insert(&(*R)->Left,P)){
+            if((*P).FB == 0){
                 (*R)->FB = -1;
                 return true;
             }
-            if((*R)->FB == +1)
-            {
+            if((*R)->FB == +1){
                 (*R)->FB = 0;
                 return false;
             }
             // vai ter rotação, qual?
-            if((*R)->Left->FB == -1)
-            {
+            if((*R)->Left->FB == -1){
                 // RSD
                 RSD(R);
                 std::cout<< "RSD\n";
@@ -146,22 +140,19 @@ bool MapAVL::Insert(Node **R, Node *P)
         return false;
     }
     //inserir a direita
-    if(MapAVL::Insert(&(*R)->Right,P))
-    {
+    if(MapAVL::Insert(&(*R)->Right,P)){
         // inseriu e  cresceu
-        if((*R)->FB == 0)
-        {
+        if((*R)->FB == 0){
             (*R)->FB = +1;
             return true;
         }
-        if((*R)->FB == -1)
-        {
+        if((*R)->FB == -1){
             (*R)->FB = 0;
             return false;
         }
         // vai ter rotação, qual?
-        if((*R)->Right->FB == +1)
-        {// RSE
+        if((*R)->Right->FB == +1){
+            // RSE
             RSE(R);
             std::cout<< "RSE\n";
             return false;
@@ -183,10 +174,8 @@ bool MapAVL::Push(thing *DAT){
     return false;
 }
 
-bool MapAVL::Remove(Node **R, int k, thing *DAT)
-{
-    if(!(*R))
-    {
+bool MapAVL::Remove(Node **R, int k, thing *DAT){
+    if(!(*R)){
         return false;
     }
     if(k == (*R)->D.key){
@@ -196,24 +185,20 @@ bool MapAVL::Remove(Node **R, int k, thing *DAT)
         return true;
     }
     // vamos para esquerda
-    if(k < (*R)->D.key)
-    {
+    if(k < (*R)->D.key){
         // procurar na sub da esquerda
-        if(MapAVL::Remove(&(*R)->Left,k,DAT))
-        {
-            if((*R)->FB == 0)
-            {
+        if(MapAVL::Remove(&(*R)->Left,k,DAT)){
+            if((*R)->FB == 0){
                 (*R)->FB = -1;
                 return true;
             }
-            if((*R)->FB == +1)
-            {
+            if((*R)->FB == +1){
                 (*R)->FB = 0;
                 return false;
             }
             // vai ter rotação, qual?
-            if((*R)->Left->FB == -1)
-            {// RSD
+            if((*R)->Left->FB == -1){
+                // RSD
                 RSD(R);
                 return false;
             }
@@ -224,28 +209,19 @@ bool MapAVL::Remove(Node **R, int k, thing *DAT)
         }
         return false;
     }
-    //procurar a direita
-    if(MapAVL::Remove(&(*R)->Right,k,DAT))
-    {
-        // inseriu e cresceu
-        if((*R)->FB == 0)
-        {
+    if(MapAVL::Remove(&(*R)->Right,k,DAT)){
+        if((*R)->FB == 0){
             (*R)->FB = +1;
             return true;
         }
-        if((*R)->FB == -1)
-        {
+        if((*R)->FB == -1){
             (*R)->FB = 0;
             return false;
         }
-        // vai ter rotação, qual?
-        if((*R)->Right->FB == +1)
-        {// RSE
+        if((*R)->Right->FB == +1){
             RSE(R);
             return false;
         }
-
-        // RDD
         RDE(R);
         return false;
     }
