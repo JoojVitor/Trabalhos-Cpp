@@ -1,0 +1,30 @@
+#include <iostream>
+#include <queue>
+using namespace std;
+int main(){
+    queue<char> s, aux;
+    char c;
+
+    int n;
+    cin>> n;
+    for(int i=0; i<n;i++){
+        cin>> c;
+        s.push(c);
+    }
+    while(!s.empty()){
+        if(s.front() == ')'){
+            if(!aux.empty()){
+                aux.pop();
+            }
+        }
+        if(s.front() == '('){
+            aux.push('(');
+        }
+        s.pop();
+    }
+    if(!aux.size()){
+        cout<< "Partiu RU!\n";
+    }else{
+        cout<< "Ainda temos " << aux.size() << " assunto(s) pendente(s)!\n";
+    }
+}
