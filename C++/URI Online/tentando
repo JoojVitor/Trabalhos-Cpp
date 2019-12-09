@@ -1,0 +1,44 @@
+#include <iostream>
+#include <list>
+#include <map>
+using namespace std;
+
+int main(){
+    int N, M, res=0;
+    string s, aux;
+    cin>> N;
+    for(int i=0; i<N; i++){
+        map<int,string> m;
+        list<int> l;
+        while(s == "\0"){
+            cin>> s;
+            for(int k = 0; k<2; k++){
+                res += s[k];
+            }
+            if(m.empty()){
+                l.push_front(res);
+                m.emplace(res,s);
+            }else{
+                if(m.find(res)->second != s){
+                    l.push_front(res);
+                    m.emplace(res,s);
+                }
+            }
+            aux = m.find(res)->second;
+            res = 0;
+        }
+        l.sort();
+        while(!l.empty()){
+            cout<< m.find(l.front())->second << " ";
+            l.pop_front();
+        }
+        cout<< endl;
+    }
+}
+/*
+a + l = 205
+alce = 304
+alface = 307
+alice = 310
+alterar = 321
+*/
