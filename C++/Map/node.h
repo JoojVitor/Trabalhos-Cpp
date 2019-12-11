@@ -1,35 +1,36 @@
 #ifndef NODE_H
 #define NODE_H
 
-class thing{
+template <class thing>
+class Thing{
 public:
-    int key;
+    thing key;
 };
 
+template <class thing>
 class Node
 {
 public:
     Node *Right;
     Node *Left;
-    thing D;
+    Thing<thing> D;
     int FB;
 
-    static Node *montaNode(thing *DAT);
-    static void desmontaNode(Node *P, thing *DAT);
+    static Node *montaNode(Thing<thing> *DAT){
+        Node* P = new Node;
+        if(P){
+            P->Right = P->Left = nullptr;
+            P->D = *DAT;
+        }
+        return P;
+    }
+
+    static void desmontaNode(Node *P, Thing<thing> *DAT){
+        if(P){
+            *DAT = P->D;
+            delete P;
+        }
+    }
 };
 
-Node *Node::montaNode(thing *DAT){
-    Node* P = new Node;
-    if(P){
-        P->Right = P->Left = nullptr;
-        P->D = *DAT;
-    }
-    return P;
-}
-void Node::desmontaNode(Node *P, thing *DAT){
-    if(P){
-        *DAT = P->D;
-        delete P;
-    }
-}
-
+#endif
