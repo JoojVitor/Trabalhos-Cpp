@@ -1,31 +1,36 @@
 #include <iostream>
 #include "mapavl.h"
 
-MapAVL::MapAVL()
+template <class thing>
+MapAVL<thing>::MapAVL()
 {
     root = nullptr;
 }
 
-MapAVL::MapAVL(Node *root1)
+template <class thing>
+MapAVL<thing>::MapAVL(Node<thing> *root1)
 {
     root = root1;
 }
 
-Node *MapAVL::Minimo(Node *R){
+template <class thing>
+Node<thing> *MapAVL<thing>::Minimo(Node<thing> *R){
     while(R and R->Left){
         R = R->Left;
     }
     return R;
 }
 
-Node *MapAVL::Max(Node *R){
+template <class thing>
+Node<thing> *MapAVL<thing>::Max(Node<thing> *R){
     if(!(R->Right))
         return R;
     Max(R->Right);
 }
 
-void MapAVL::RSD(Node **R){
-    Node *A,*B;
+template <class thing>
+void MapAVL<thing>::RSD(Node<thing> **R){
+    Node<thing> *A,*B;
 
     A = *R;
     B = A->Left;
@@ -40,8 +45,9 @@ void MapAVL::RSD(Node **R){
     }
 }
 
-void MapAVL::RSE(Node **R){
-    Node *A,*B;
+template <class thing>
+void MapAVL<thing>::RSE(Node<thing> **R){
+    Node<thing> *A,*B;
 
     A = *R;
     B = A->Right;
@@ -56,10 +62,11 @@ void MapAVL::RSE(Node **R){
     }
 }
 
-void MapAVL::RDD(Node **R){
-    Node *a = *R;
-    Node *b = a->Left;
-    Node *c = b->Right;
+template <class thing>
+void MapAVL<thing>::RDD(Node<thing> **R){
+    Node<thing> *a = *R;
+    Node<thing> *b = a->Left;
+    Node<thing> *c = b->Right;
 
     b->Right = c->Left;
     a->Left = c->Right;
@@ -81,10 +88,11 @@ void MapAVL::RDD(Node **R){
     c->FB = 0;
 }
 
-void MapAVL::RDE(Node **R){
-    Node *a = *R;
-    Node *b = a->Right;
-    Node *c = b->Left;
+template <class thing>
+void MapAVL<thing>::RDE(Node<thing> **R){
+    Node<thing> *a = *R;
+    Node<thing> *b = a->Right;
+    Node<thing> *c = b->Left;
 
     a->Right = c->Left;
     b->Left = c->Right;
@@ -105,15 +113,15 @@ void MapAVL::RDE(Node **R){
     }
 }
 
-bool MapAVL::Insert(Node **R, Node *P){
+template <class thing>
+bool MapAVL<thing>::Insert(Node<thing> **R, Node<thing> *P){
     if(!(*R)){
         // ta na folha -> insere
         *R = P;
         P->FB = 0;
         return true;
     }
-    if(P->D.key < (*R)->D.key)
-    {
+    if(P->D.key < (*R)->D.key){
         // inserir na sub da esquerda
         if(MapAVL::Insert(&(*R)->Left,P)){
             if((*P).FB == 0){
@@ -166,22 +174,24 @@ bool MapAVL::Insert(Node **R, Node *P){
     return false;
 }
 
-bool MapAVL::Push(thing *DAT){
-    Node *P = Node::montaNode(DAT);
+template <class thing>
+bool MapAVL<thing>::Push(Thing<thing> *DAT){
+    Node<thing> *P = Node<thing>::montaNode(DAT);
     if(P){
         return Insert(&root,P);
     }
     return false;
 }
 
-bool MapAVL::Remove(Node **R, int k, thing *DAT){
+template <class thing>
+bool MapAVL<thing>::Remove(Node<thing> **R, int k, thing *DAT){
     if(!(*R)){
         return false;
     }
     if(k == (*R)->D.key){
         *DAT = (*R)->D;
         std::cout<< DAT->key <<std::endl;
-        Node::desmontaNode(*R,DAT);
+        Node<thing>::desmontaNode(*R,DAT);
         return true;
     }
     // vamos para esquerda
