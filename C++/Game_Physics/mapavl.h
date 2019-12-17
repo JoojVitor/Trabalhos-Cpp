@@ -2,25 +2,25 @@
 #define MAPAVL_H
 #include "node.h"
 
-template <class thing>
 class MapAVL
 {
 private:
-    Node<thing>* Minimo(Node<thing> *R);
-    Node<thing>* Max(Node<thing> *R);
-    static bool Insert(Node<thing> **R, Node<thing> *P);
-    static void RSD(Node<thing> **R);
-    static void RSE(Node<thing> **R);
-    static void RDD(Node<thing> **R);
-    static void RDE(Node<thing> **R);
+    Node* Minimo(Node *R);
+    Node* Max(Node *R);
+    static bool Insert(Node **R, Node *P);
+    static bool Remove(Node **R, pos k, pair<pos, entity> *DAT);
+    static void RSD(Node **R);
+    static void RSE(Node **R);
+    static void RDD(Node **R);
+    static void RDE(Node **R);
 
 public:
-    Node<thing> *root;
+    Node *root;
     MapAVL();
-    MapAVL(Node<thing> *root1);
+    MapAVL(Node *root1);
 
-    bool Push(Thing<thing> *DAT);
-    static bool Remove(Node<thing> **R,int k, thing *DAT);
+    bool Push(pair<pos, entity> *DAT);
+    bool Pop(pos k, pair<pos,entity> *DAT);
 };
 
 #endif // MAPAVL_H
