@@ -1,22 +1,18 @@
 #ifndef NODE_H
 #define NODE_H
+#include "entity.h"
+#include <iostream>
+using namespace std;
 
-template <class thing>
-class Thing{
-public:
-    thing key;
-};
-
-template <class thing>
 class Node
 {
 public:
     Node *Right;
     Node *Left;
-    Thing<thing> D;
+    pair<pos,entity> D;
     int FB;
 
-    static Node *montaNode(Thing<thing> *DAT){
+    static Node *montaNode(pair<pos,entity> *DAT){
         Node* P = new Node;
         if(P){
             P->Right = P->Left = nullptr;
@@ -25,7 +21,7 @@ public:
         return P;
     }
 
-    static void desmontaNode(Node *P, Thing<thing> *DAT){
+    static void desmontaNode(Node *P, pair<pos,entity> *DAT){
         if(P){
             *DAT = P->D;
             delete P;
