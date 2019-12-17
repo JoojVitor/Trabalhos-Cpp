@@ -1,0 +1,381 @@
+1A6 1A5 1A5 1A4 1A4 1P3 1A1 1A2 1A1 1A3 1P5 1A6 1A1 2V3 2P6 2V4 2V5 2V3 2V6 2V2 2V1 2P1 2V1 2V2 2V2 2V3 3R4 3R2 3P6 3R3 3R1 3R3 3R5 3R1 3P4 3R2 3R1 3R5 3R4 4B6 4P1 4B5 4B2 4B3 4B3 4B2 4P1 4B4 4B4 4B5 4B3 4B1
+
+Jogador 1
+
+V A R V R R
+A A V R B A
+R B A V V V
+B V B R B V
+V B B B A R
+R V V A R A
+
+1V1 1V1 2R1 2R1 3A1 3A1 4B1 4B1 1P1 2P1 3P1 4P6 1V3 1V3 1V3 3A3 3A3 3A3 4B3 2R4 4B5 2R4 4B3 2R3 1V3 1V5 1P6 1V2 1V4 1V5 1V6 3A5 3A4 3A4 3A4 3P4 3A3 3A3 2R2 2R2 2R5 2R5 2P5 2R5 2R5 4B5 4B5 4P6 4B6 4B6 4B2 4B2
+
+Jogador 2
+
+V B V A R A
+V R V R B V
+R B V B V R
+B A R A V V
+A R B R A A
+B A R A B V
+
+2P1 2V5 3R6 3R5 1A1 1A1 4B1 4B1 1V6 2P5 3P4 4P6 2V6 2V2 2V5 1A3 1A4 1A2 4B5 3R2 4B4 3R4 4B3 3R3 2V2 2V5 2P2 2V2 2V4 2V5 2V6 1A4 1A5 1A6 1A4 1P6 1A5 1A6 3R2 3R6 3R2 3R3 3P4 3R1 3R2 4B5 4B2 4P3 4B1 4B6 4B2 4B2
+
+Jogador 3
+
+R V A A R B
+V B R R V A
+R V B V A B
+B B A R V B
+A A A B R R
+V V R V R A
+
+1A4 2V5 3R5 4B6 1A3 2V4 3R4 4B3 1A3 2V3 3P3 4B3 1A2 2V1 3R2 4B4 1A2 2V1 3R1 4B6 1A1 2V2 3P6 4B3 1A5 2P5 3R6 4B1 1P4 2V5 3R2 4B3 1P2 2P6 3R5 4B1 1A1 2P5 3R3 4B2 1A2 2V6 3R6 4P1 1A1 2V5 3R2 4P2 1A2 2V3 3R6 4B1
+
+Jogador 1 Jogador 3 Jogador 4
+
+B V A A A V
+V R V B R V
+R V R A A R
+R V R B V A
+B V A B A B
+B B R B A A
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*#include "ficha.h"
+#include <iostream>
+using namespace std;
+
+void ficha::setFicha(char cor, int i, int j){
+    in = i;
+    ch = cor;
+    jg = j;
+}
+
+void ficha::retVencedor(int t1, int t2, int t3, int t4,int t5,int t6){
+    int j1=0,j2=0,j3=0,j4=0;
+    switch(t1){
+        case 1:
+            j1++;
+            break;
+        case 2:
+            j2++;
+            break;
+        case 3:
+            j3++;
+            break;
+        case 4:
+            j4++;
+            break;
+    }
+
+    switch(t2){
+        case 1:
+            j1++;
+            break;
+        case 2:
+            j2++;
+            break;
+        case 3:
+            j3++;
+            break;
+        case 4:
+            j4++;
+            break;
+    }
+
+    switch(t3){
+        case 1:
+            j1++;
+            break;
+        case 2:
+            j2++;
+            break;
+        case 3:
+            j3++;
+            break;
+        case 4:
+            j4++;
+            break;
+    }
+
+    switch(t4){
+        case 1:
+            j1++;
+            break;
+        case 2:
+            j2++;
+            break;
+        case 3:
+            j3++;
+            break;
+        case 4:
+            j4++;
+            break;
+    }
+
+    switch(t5){
+        case 1:
+            j1++;
+            break;
+        case 2:
+            j2++;
+            break;
+        case 3:
+            j3++;
+            break;
+        case 4:
+            j4++;
+            break;
+    }
+
+    switch(t6){
+        case 1:
+            j1++;
+            break;
+        case 2:
+            j2++;
+            break;
+        case 3:
+            j3++;
+            break;
+        case 4:
+            j4++;
+            break;
+    }
+
+    if(j1 >= j2 and j1 >= j3 and j1 >= j4){
+        cout<< "Jogador 1 ";
+    }
+    if(j2 >= j1 and j2 >= j3 and j2 >= j4){
+        cout<< "Jogador 2 ";
+    }
+    if(j3 >= j1 and j3 >= j2 and j3 >= j4){
+        cout<< "Jogador 3 ";
+    }
+    if(j4 >= j1 and j4 >= j2 and j4 >= j3){
+        cout<< "Jogador 4 ";
+    }
+}*/
+
+
+-------------------------------------------------------------------------------------------
+
+/*#include <iostream>
+#include "queue.h"
+#include "stack.h"
+using namespace std;
+static stackVector T1(5), T2(4), T3(3), T4(2), T5(1), T6(0);
+static int falso=0;
+
+void insereTorre(ficha *aux){
+    falso = 0;
+    switch(aux->in){
+    case 1:
+        torre1:
+        if(aux->ch == 'P'){
+            if(T1.IsEmpty()){
+                cout<< "Torre 1 vazia, jogada valida\n";
+            }else{
+                T1.Pop(aux);
+                cout<< "Ficha " << aux->in << " retirada\n";
+            }
+        }else{
+            if(!T1.IsFull()){
+                T1.Push(*aux);
+                cout<< "Ficha " << aux->in << " inserida\n";
+            }else{
+                if(falso >= 7)
+                    goto full;
+                falso++;
+                goto torre2;
+            }
+        }
+        break;
+
+    case 2:
+        torre2:
+        if(aux->ch == 'P'){
+            if(T2.IsEmpty()){
+                cout<< "Torre 2 vazia, jogada valida\n";
+            }else{
+                T2.Pop(aux);
+                cout<< "Ficha " << aux->in << " retirada\n";
+            }
+        }else{
+            if(!T2.IsFull()){
+                T2.Push(*aux);
+                cout<< "Ficha " << aux->in << " inserida\n";
+            }else{
+                falso++;
+                goto torre3;
+            }
+        }
+        break;
+
+    case 3:
+        torre3:
+        if(aux->ch == 'P'){
+            if(T3.IsEmpty()){
+                cout<< "Torre 3 vazia, jogada valida\n";
+            }else{
+                T3.Pop(aux);
+                cout<< "Ficha " << aux->in << " retirada\n";
+            }
+        }else{
+            if(!T3.IsFull()){
+                T3.Push(*aux);
+                cout<< "Ficha " << aux->in << " inserida\n";
+            }else{
+                falso++;
+                goto torre4;
+            }
+        }
+        break;
+
+    case 4:
+        torre4:
+        if(aux->ch == 'P'){
+            if(T4.IsEmpty()){
+                cout<< "Torre 4 vazia, jogada valida\n";
+            }else{
+                T4.Pop(aux);
+                cout<< "Ficha " << aux->in << " retirada\n";
+            }
+        }else{
+            if(!T4.IsFull()){
+                T4.Push(*aux);
+                cout<< "Ficha " << aux->in << " inserida\n";
+            }else{
+                falso++;
+                goto torre5;
+            }
+        }
+        break;
+
+    case 5:
+        torre5:
+        if(aux->ch == 'P'){
+            if(T5.IsEmpty()){
+                cout<< "Torre 5 vazia, jogada valida\n";
+            }else{
+                T5.Pop(aux);
+                cout<< "Ficha " << aux->in << " retirada\n";
+            }
+        }else{
+            if(!T5.IsFull()){
+                T5.Push(*aux);
+                cout<< "Ficha " << aux->in << " inserida\n";
+            }else{
+                falso++;
+                goto torre6;
+            }
+        }
+        break;
+
+    case 6:
+        torre6:
+        if(aux->ch == 'P'){
+            if(T6.IsEmpty()){
+                cout<< "Torre 6 vazia, jogada valida\n";
+            }else{
+                T6.Pop(aux);
+                cout<< "Ficha " << aux->in << " retirada\n";
+            }
+        }else{
+            if(!T6.IsFull()){
+                T6.Push(*aux);
+                cout<< "Ficha " << aux->in << " inserida\n";
+            }else{
+                falso++;
+                goto torre1;
+            }
+        }
+        break;
+    default:
+        full:
+        break;
+    }
+}
+
+int main()
+{
+    Queue J[5];
+    ficha F,aux;
+
+    int n, j;
+    char c;
+    cout<< "Insira as fichas: ";
+    for(int i=0; i < 52; i++){
+        cin>> j >> c >> n;
+        F.setFicha(c,n,j);
+        J[j].Enqueue(&F);
+    }
+
+    system("cls");
+
+    int cont = 1, rodada = 1;
+    cout<< "\n----------- Rodada " << rodada <<" -----------\n";
+    while(falso < 7){
+        if(cont == 5){
+            cout<< "\n----------- Rodada " << rodada <<" -----------\n";
+            rodada++;
+            cont = 1;
+        }
+        cout<< "Turno Jogador "<< cont << ": ";
+
+        J[cont].Dequeue(&F);
+        insereTorre(&F);
+        cont++;
+    }
+        cout<< "\n\n";
+        int t1,t2,t3,t4,t5,t6;
+        T1.retDiagonal(&aux);
+        t1 = aux.jg;
+        T2.retDiagonal(&aux);
+        t2 = aux.jg;
+        T3.retDiagonal(&aux);
+        t3 = aux.jg;
+        T4.retDiagonal(&aux);
+        t4 = aux.jg;
+        T5.retDiagonal(&aux);
+        t5 = aux.jg;
+        T6.retDiagonal(&aux);
+        t6 = aux.jg;
+        cout<< "============================================================\n\nVencedor(es): ";
+        aux.retVencedor(t1,t2,t3,t4,t5,t6);
+        cout<< "\n\n============================================================\n\n";
+        T1.imprime(); cout<<'\n';
+        T2.imprime(); cout<<'\n';
+        T3.imprime(); cout<<'\n';
+        T4.imprime(); cout<<'\n';
+        T5.imprime(); cout<<'\n';
+        T6.imprime(); cout<<"\n\n";
+
+        T1.retDiagonal(&aux);
+        cout<< "Torre 1\nJogador: " << aux.jg << "\nCor: " << aux.ch << "\nFicha: " << aux.in;
+        T2.retDiagonal(&aux);
+        cout<< "\n\nTorre 2\nJogador: " << aux.jg << "\nCor: " << aux.ch << "\nFicha: " << aux.in;
+        T3.retDiagonal(&aux);
+        cout<< "\n\nTorre 3\nJogador: " << aux.jg << "\nCor: " << aux.ch << "\nFicha: " << aux.in;
+        T4.retDiagonal(&aux);
+        cout<< "\n\nTorre 4\nJogador: " << aux.jg << "\nCor: " << aux.ch << "\nFicha: " << aux.in;
+        T5.retDiagonal(&aux);
+        cout<< "\n\nTorre 5\nJogador: " << aux.jg << "\nCor: " << aux.ch << "\nFicha: " << aux.in;
+        T6.retDiagonal(&aux);
+        cout<< "\n\nTorre 6\nJogador: " << aux.jg << "\nCor: " << aux.ch << "\nFicha: " << aux.in <<"\n\n";
+}*/
+
+
