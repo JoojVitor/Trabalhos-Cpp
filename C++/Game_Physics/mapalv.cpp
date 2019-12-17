@@ -1,36 +1,31 @@
 #include <iostream>
 #include "mapavl.h"
 
-template <class thing>
-MapAVL<thing>::MapAVL()
+MapAVL::MapAVL()
 {
     root = nullptr;
 }
 
-template <class thing>
-MapAVL<thing>::MapAVL(Node<thing> *root1)
+MapAVL::MapAVL(Node *root1)
 {
     root = root1;
 }
 
-template <class thing>
-Node<thing> *MapAVL<thing>::Minimo(Node<thing> *R){
+Node *MapAVL::Minimo(Node *R){
     while(R and R->Left){
         R = R->Left;
     }
     return R;
 }
 
-template <class thing>
-Node<thing> *MapAVL<thing>::Max(Node<thing> *R){
+Node *MapAVL::Max(Node *R){
     if(!(R->Right))
         return R;
     Max(R->Right);
 }
 
-template <class thing>
-void MapAVL<thing>::RSD(Node<thing> **R){
-    Node<thing> *A,*B;
+void MapAVL::RSD(Node **R){
+    Node *A,*B;
 
     A = *R;
     B = A->Left;
@@ -45,9 +40,8 @@ void MapAVL<thing>::RSD(Node<thing> **R){
     }
 }
 
-template <class thing>
-void MapAVL<thing>::RSE(Node<thing> **R){
-    Node<thing> *A,*B;
+void MapAVL::RSE(Node **R){
+    Node *A,*B;
 
     A = *R;
     B = A->Right;
@@ -62,11 +56,10 @@ void MapAVL<thing>::RSE(Node<thing> **R){
     }
 }
 
-template <class thing>
-void MapAVL<thing>::RDD(Node<thing> **R){
-    Node<thing> *a = *R;
-    Node<thing> *b = a->Left;
-    Node<thing> *c = b->Right;
+void MapAVL::RDD(Node **R){
+    Node *a = *R;
+    Node *b = a->Left;
+    Node *c = b->Right;
 
     b->Right = c->Left;
     a->Left = c->Right;
@@ -88,11 +81,10 @@ void MapAVL<thing>::RDD(Node<thing> **R){
     c->FB = 0;
 }
 
-template <class thing>
-void MapAVL<thing>::RDE(Node<thing> **R){
-    Node<thing> *a = *R;
-    Node<thing> *b = a->Right;
-    Node<thing> *c = b->Left;
+void MapAVL::RDE(Node **R){
+    Node *a = *R;
+    Node *b = a->Right;
+    Node *c = b->Left;
 
     a->Right = c->Left;
     b->Left = c->Right;
@@ -113,15 +105,14 @@ void MapAVL<thing>::RDE(Node<thing> **R){
     }
 }
 
-template <class thing>
-bool MapAVL<thing>::Insert(Node<thing> **R, Node<thing> *P){
+bool MapAVL::Insert(Node **R, Node *P){
     if(!(*R)){
         // ta na folha -> insere
         *R = P;
         P->FB = 0;
         return true;
     }
-    if(P->D.key < (*R)->D.key){
+    if((P->D.first.row < (*R)->D.first.row) and (P->D.first.col < (*R)->D.first.col)){
         // inserir na sub da esquerda
         if(MapAVL::Insert(&(*R)->Left,P)){
             if((*P).FB == 0){
@@ -174,28 +165,30 @@ bool MapAVL<thing>::Insert(Node<thing> **R, Node<thing> *P){
     return false;
 }
 
-template <class thing>
-bool MapAVL<thing>::Push(Thing<thing> *DAT){
-    Node<thing> *P = Node<thing>::montaNode(DAT);
+bool MapAVL::Push(pair<pos, entity> *DAT){
+    Node *P = Node::montaNode(DAT);
     if(P){
         return Insert(&root,P);
     }
     return false;
 }
 
-template <class thing>
-bool MapAVL<thing>::Remove(Node<thing> **R, int k, thing *DAT){
+bool MapAVL::Pop(pos k, pair<pos, entity> *DAT){
+    return Remove(&root,k,DAT);
+}
+
+bool MapAVL::Remove(Node **R, pos k, pair<pos,entity> *DAT){
     if(!(*R)){
         return false;
     }
-    if(k == (*R)->D.key){
+    if((k.row == (*R)->D.first.row) and (k.col == (*R)->D.first.col)){
         *DAT = (*R)->D;
-        std::cout<< DAT->key <<std::endl;
-        Node<thing>::desmontaNode(*R,DAT);
+        //std::cout<< DAT->second.getHp() <<std::endl;
+        Node::desmontaNode(*R,DAT);
         return true;
     }
     // vamos para esquerda
-    if(k < (*R)->D.key){
+    if((k.row < (*R)->D.first.row) and (k.col < (*R)->D.first.col)){
         // procurar na sub da esquerda
         if(MapAVL::Remove(&(*R)->Left,k,DAT)){
             if((*R)->FB == 0){
