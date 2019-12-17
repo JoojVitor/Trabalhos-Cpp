@@ -1,32 +1,49 @@
-#include "jogador.h"
+#include "entity.h"
 
-jogador::jogador()
+entity::entity()
 {
     ps.row = ps.col = dano = hp = 0;
 }
 
-void jogador::setPos(int i, int j){
-    ps.row = i; ps.col = j;
+void entity::setName(std::string name){
+    nome = name;
 }
 
-void jogador::setDano(int dam){
+
+void entity::setTipo(std::string type){
+    tipo = type;
+}
+
+void entity::setPos(int i, int j){
+    ps.row = i;
+    ps.col = j;
+}
+
+void entity::setDano(int dam){
     dano = dam;
 }
 
-void jogador::setHp(int HP){
+void entity::setHp(int HP){
     hp = HP;
 }
 
-void jogador::getPos(int *i, int *j){
-    i = &ps.row;
-    j = & ps.col;
+void entity::getPos(int *i, int *j){
+    *i = ps.row;
+    *j = ps.col;
 }
 
-int jogador::getDano(){
+std::string entity::getName(){
+    return nome;
+}
+
+std::string entity::getTipo(){
+    return tipo;
+}
+
+int entity::getDano(){
     return dano;
 }
 
-int jogador::getHp(){
+int entity::getHp(){
     return hp;
 }
-
