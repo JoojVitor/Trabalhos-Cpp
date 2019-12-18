@@ -7,7 +7,8 @@ public:
     int nid;
     int row;
     int col;
-    void setID(int id, int r, int c){nid = id; row = r; col = c;}
+    int act;
+    void setID(int id, int r, int c){act = 5; nid = id; row = r; col = c;}
 };
 
 class entity{
@@ -24,11 +25,16 @@ public:
     void setPos(int,int);
     void setDano(int);
     void setHp(int);
-    void getPos(int*,int*);
+    void getPos(int*,int*);  
+    void setID(int);
+    void resetAct();
     std::string getName();
     std::string getTipo();
     int getDano();
     int getHp();
+    ID getID();
+    bool subAct(char);
+    int getAct();
 };
 
 #endif // ENTITY_H

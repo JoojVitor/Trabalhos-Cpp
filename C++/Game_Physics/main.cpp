@@ -6,22 +6,6 @@ using namespace std;
 
 static MapAVL data;
 
-bool control(char cmd, int dir, int *l, int *c){
-    if(cmd == 'M'){
-        switch(dir){
-            case 4:
-            if(*c < 0){
-                c--;
-                l++;
-            }else{
-                cout<< "Movimento impossivel";
-            }
-            break;
-        }
-    }
-    return false;
-}
-
 void imprimeMatriz(int auxl, int auxc, entity **mapa){
     cout<<endl;
     for(int i=0; i<auxl; i++){
@@ -71,6 +55,7 @@ int main(){
         cout<< "Digite o Dano: ";
         cin >> d;
         E[i].setDano(d);
+        E[i].setID(i);
 
         x.first = p;
         x.second = E[i];
@@ -118,6 +103,7 @@ int main(){
                 O[cont].setTipo("Objeto");
                 O[cont].setName("Objeto");
                 O[cont].setPos(l,c);
+                O[cont].setID(cont+(N+1));
                 p.setID(cont+(N+1),l,c);
                 x.first = p;
                 x.second = O[cont];
@@ -128,8 +114,10 @@ int main(){
         }
         cin>> l >> c;
     }
-    p.setID(2,3,3);
-    cout<< data.Pop(p,&x);
+
+    //teste de busca = OK;
+    //p.setID(2,3,3);
+    //cout<< data.Pop(p,&x);
 
     cout<<endl;
     for(int i=0; i<auxl; i++){
@@ -147,4 +135,74 @@ int main(){
         }
         cout<< "\n";
     }
+
+    //controle
+    char J;
+    int K, turn = N;
+    int lin, col;
+    cout<< "Jogadas: ";
+    cin>> J >> K;
+    while(J != 'F' and K != 0){
+        switch(K){
+            case 4:
+            if(E[turn].subAct('M')){
+                E[turn].getPos(&lin,&col);
+                if(col > 0){
+                    if(mapa[lin][col-1].getTipo() != "Objeto"){
+                        if(mapa[lin][col-1].getTipo() != "Jogador"){
+                            mapa[lin][col].setTipo("null");
+                            data.Pop(E[turn].getID(),&x);
+                            E[turn].setPos(lin,col-1);
+                            p.setID(E[turn].getID().nid,lin,col-1);
+                            x.first = p;
+                            x.second = E[turn];
+                            mapa[lin][col-1] = E[turn];
+                            data.Push(&x);
+                        }
+                    }
+                }
+                cout<< E[turn].getName() << ":(" << lin << "," << col << ") ";
+            }
+            break;
+        }
+        cin>> J >> K;
+    }
+    cout<<endl;
+    for(int i=0; i<auxl; i++){
+        for(int j=0; j<auxc; j++){
+            if(mapa[i][j].getTipo() == "Jogador"){
+                cout<< 'X';
+            }else{
+                if(mapa[i][j].getTipo() == "Objeto"){
+                    cout<< '0';
+                }else{
+                    cout<< '-';
+                }
+            }
+            cout<< "\t";
+        }
+        cout<< "\n";
+    }
 }
+
+/*2
+0 0 21 5
+5 5 15 7
+6 6
+1 0 0 1 3 1 5 1 1 2 4 2 2 3 2 4 4 4 1 5 -1 -1
+
+6
+1 1 1 1
+1 2 1 1
+3 3 1 1
+3 2 1 1
+1 3 1 1
+1 0 1 1
+5 5
+2 2 -1 -1
+
+1
+3 3 1 1
+5 5
+-1 -1
+*/

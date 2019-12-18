@@ -186,7 +186,7 @@ bool MapAVL::Search(Node **R, ID k, pair<ID, entity> *DAT){
     }
     if(k.nid == ((*R)->D.first.nid)){
         *DAT = (*R)->D;
-        std::cout<< DAT->second.getName() <<std::endl;
+        //std::cout<< DAT->second.getName() <<std::endl;
         return true;
     }
     if((k.nid < (*R)->D.first.nid)){
@@ -209,7 +209,7 @@ bool MapAVL::Remove(Node **R, ID k, pair<ID,entity> *DAT){
     }
     if(k.nid == ((*R)->D.first.nid)){
         *DAT = (*R)->D;
-        std::cout<< DAT->second.getName() <<std::endl;
+        //std::cout<< DAT->second.getName() <<std::endl;
         Node::desmontaNode(*R,DAT);
         return true;
     }
