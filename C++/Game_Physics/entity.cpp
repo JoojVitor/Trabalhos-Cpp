@@ -2,7 +2,8 @@
 
 entity::entity()
 {
-    ps.row = ps.col = dano = hp = 0;
+    id.nid = id.row = id.col = dano = hp = 0;
+    tipo = "null";
 }
 
 void entity::setName(std::string name){
@@ -15,8 +16,8 @@ void entity::setTipo(std::string type){
 }
 
 void entity::setPos(int i, int j){
-    ps.row = i;
-    ps.col = j;
+    id.row = i;
+    id.col = j;
 }
 
 void entity::setDano(int dam){
@@ -28,8 +29,8 @@ void entity::setHp(int HP){
 }
 
 void entity::getPos(int *i, int *j){
-    *i = ps.row;
-    *j = ps.col;
+    *i = id.row;
+    *j = id.col;
 }
 
 std::string entity::getName(){

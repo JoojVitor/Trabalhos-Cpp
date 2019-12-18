@@ -2,18 +2,19 @@
 #define ENTITY_H
 #include <iostream>
 
-class pos{
+class ID{
 public:
+    int nid;
     int row;
     int col;
-    void setPosition(int r, int c){row = r; col = c;}
+    void setID(int id, int r, int c){nid = id; row = r; col = c;}
 };
 
 class entity{
 private:
     std::string nome;
     std::string tipo;
-    pos ps;
+    ID id;
     int dano;
     int hp;
 public:
