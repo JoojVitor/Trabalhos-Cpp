@@ -116,8 +116,9 @@ int main(){
                     cout<< "\nPosicao [" << l << "][" << c << "] ja esta ocupada!\n";
             }else{
                 O[cont].setTipo("Objeto");
+                O[cont].setName("Objeto");
                 O[cont].setPos(l,c);
-                p.setID(cont+N,l,c);
+                p.setID(cont+(N+1),l,c);
                 x.first = p;
                 x.second = O[cont];
                 data.Push(&x);
@@ -127,6 +128,23 @@ int main(){
         }
         cin>> l >> c;
     }
-    p.setID(6,3,3);
+    p.setID(2,3,3);
     cout<< data.Pop(p,&x);
+
+    cout<<endl;
+    for(int i=0; i<auxl; i++){
+        for(int j=0; j<auxc; j++){
+            if(mapa[i][j].getTipo() == "Jogador"){
+                cout<< 'X';
+            }else{
+                if(mapa[i][j].getTipo() == "Objeto"){
+                    cout<< '0';
+                }else{
+                    cout<< '-';
+                }
+            }
+            cout<< "\t";
+        }
+        cout<< "\n";
+    }
 }
